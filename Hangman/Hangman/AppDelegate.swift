@@ -16,6 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        self.window = UIWindow()
+        let nav = UINavigationController()
+        nav.navigationBar.isHidden = true
+        
+        // MARK: Style Navigation Bar
+//        nav.navigationBar.tintColor = UIColor.black
+//        let navigationBarAppearace = UINavigationBar.appearance()
+//        let font = UIFont(name: "Helvetica-Bold", size: 16)
+//        if let font = font {
+//            navigationBarAppearace.titleTextAttributes = [NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.black];
+//        }
+        
+        // MARK: Launch the Main View
+        let mainViewController = StartScreenViewController()
+        nav.viewControllers = [mainViewController]
+        self.window?.rootViewController = nav
+        self.window?.makeKeyAndVisible()
         return true
     }
 

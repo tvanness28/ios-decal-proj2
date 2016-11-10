@@ -16,6 +16,8 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     var mid_screen = UIView()
     
     var curAnswerLabel = UILabel()
+    var missBoxView = UIImageView(image: #imageLiteral(resourceName: "MissBox.png"))
+    var missViews = [UILabel]()
     var curMissLabel = UILabel()
     var hangManImageView = UIImageView(image: #imageLiteral(resourceName: "hangman1.gif"))
     var hangManImages: [UIImage] = [#imageLiteral(resourceName: "hangman1.gif"),#imageLiteral(resourceName: "hangman2.gif"),#imageLiteral(resourceName: "hangman3.gif"),#imageLiteral(resourceName: "hangman4.gif"),#imageLiteral(resourceName: "hangman5.gif"),#imageLiteral(resourceName: "hangman6.gif"),#imageLiteral(resourceName: "hangman7.gif")]
@@ -36,12 +38,18 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let startOverAction = UIAlertAction(title: "Start Over", style: UIAlertActionStyle.default) { (action) in
+        
+        // Needed two seperate actions, alerts would fail occasionally otherwise
+        let startOverLoseAction = UIAlertAction(title: "Start Over", style: UIAlertActionStyle.default) { (action) in
             self.setup_new_game()
         }
         
-        winAlert.addAction(startOverAction)
-        loseAlert.addAction(startOverAction)
+        let startOverWinAction = UIAlertAction(title: "Start Over", style: UIAlertActionStyle.default) { (action) in
+            self.setup_new_game()
+        }
+        
+        winAlert.addAction(startOverWinAction)
+        loseAlert.addAction(startOverLoseAction)
         
         self.view.backgroundColor = UIColor.white
         
@@ -59,13 +67,38 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         mid_screen.backgroundColor = UIColor(hue: 0.5417, saturation: 0.38, brightness: 1, alpha: 1.0)
         self.view.addSubview(mid_screen)
         
+        mid_screen.addSubview(missBoxView)
+        missBoxView.translatesAutoresizingMaskIntoConstraints = false
+        
+        missBoxView.topAnchor.constraint(equalTo: mid_screen.topAnchor, constant: 10).isActive = true
+        missBoxView.bottomAnchor.constraint(equalTo: mid_screen.topAnchor, constant: 40).isActive = true
+        missBoxView.centerXAnchor.constraint(equalTo: mid_screen.centerXAnchor).isActive = true
+        
+        var leadAnch = missBoxView.leadingAnchor
+        
+        for i in 0...6 {
+            let new_label = UILabel()
+            new_label.text = ""
+            new_label.font = UIFont.boldSystemFont(ofSize: 18)
+            new_label.textColor = UIColor.white
+            missViews.append(new_label)
+            missBoxView.addSubview(missViews[i])
+            missViews[i].translatesAutoresizingMaskIntoConstraints = false
+            
+            missViews[i].topAnchor.constraint(equalTo: missBoxView.topAnchor, constant: 5).isActive = true
+            missViews[i].leadingAnchor.constraint(equalTo: leadAnch, constant: 34).isActive = true
+            
+            leadAnch = missViews[i].trailingAnchor
+        }
+        
         curAnswerLabel.numberOfLines = 0
         curAnswerLabel.font = UIFont.boldSystemFont(ofSize: 32)
         mid_screen.addSubview(curAnswerLabel)
         curAnswerLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        curAnswerLabel.topAnchor.constraint(equalTo: missBoxView.bottomAnchor).isActive = true
+        curAnswerLabel.bottomAnchor.constraint(equalTo: mid_screen.bottomAnchor).isActive = true
         curAnswerLabel.centerXAnchor.constraint(equalTo: mid_screen.centerXAnchor).isActive = true
-        curAnswerLabel.centerYAnchor.constraint(equalTo: mid_screen.centerYAnchor).isActive = true
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -79,12 +112,13 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         letterCollection.backgroundColor = UIColor(hue: 0.5417, saturation: 1, brightness: 1, alpha: 1.0)
         self.view.addSubview(letterCollection)
         
+        set_main_screen_for_orientation()
+        
         setup_new_game()
         
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
+    func set_main_screen_for_orientation() {
         screen = UIScreen.main.bounds.size
         if UIDevice.current.orientation.isLandscape {
             top_screen.frame = CGRect(x: 0, y: 0, width: 150 , height: (0.6666 * screen.height))
@@ -95,6 +129,11 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             mid_screen.frame = CGRect(x: 0, y: (0.2222 * screen.height), width: screen.width , height: (0.4444 * screen.height))
             letterCollection.frame = CGRect(x: 0, y: (0.6666 * screen.height), width: screen.width , height: (0.33333 * screen.height))
         }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        set_main_screen_for_orientation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -110,8 +149,10 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         let cell: LetterSelector = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LetterSelector
         let alpha_i = alphabet.index(alphabet.startIndex, offsetBy: indexPath.row)
         cell.textLabel.text = alphabet[alpha_i]
+        cell.textLabel.textColor = UIColor.black
         cell.chosen = false
-        cell.backgroundColor = UIColor.white
+        cell.keyImgView.image = #imageLiteral(resourceName: "Letter-Box.png")
+        cell.backgroundColor = UIColor(hue: 0.5417, saturation: 1, brightness: 1, alpha: 1.0)
         return cell
     }
     
@@ -120,8 +161,9 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         if let letter = cell.textLabel.text {
             if !cell.chosen {
                 letter_clicked(letter)
+                cell.textLabel.textColor = UIColor(hue: 0.5417, saturation: 1, brightness: 1, alpha: 1.0)
+                cell.keyImgView.image = #imageLiteral(resourceName: "Letter-Box2.png")
                 cell.chosen = true
-                cell.backgroundColor = UIColor(hue: 0.5417, saturation: 1, brightness: 1, alpha: 1.0)
             }
         }
     }
@@ -133,6 +175,10 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         hangManImageView.image = #imageLiteral(resourceName: "hangman1.gif")
         
         letterCollection.reloadData()
+        
+        for miss in missViews {
+            miss.text = ""
+        }
         
         let hangmanPhrases = HangmanPhrases()
         if let phrase = hangmanPhrases.getRandomPhrase() {
@@ -168,6 +214,12 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
                     curMissed = getCurrentMisses()
                     curMissLabel.text = curMissed
                     curHangMan += 1
+                    for miss in missViews {
+                        if miss.text == "" {
+                            miss.text = letter
+                            break
+                        }
+                    }
                     if curHangMan >= hangManImages.count {
                         present(loseAlert, animated: true)
                     } else {

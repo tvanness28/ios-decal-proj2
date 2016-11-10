@@ -18,16 +18,16 @@ class StartScreenViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor(hue: 0.5417, saturation: 1, brightness: 1, alpha: 1.0)
         
         titleLabel.text = "Hang Man"
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 42.0)
-        titleLabel.textColor = UIColor.black
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 52.0)
+        titleLabel.textColor = UIColor.white
         self.view.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         titleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant:50).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant:100).isActive = true
         
         
         startGameButton.setTitle("Start", for: UIControlState.normal)

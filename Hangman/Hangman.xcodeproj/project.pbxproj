@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		A57122FB1DD39E9B00EC42A3 /* HiddenChar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57122FA1DD39E9B00EC42A3 /* HiddenChar.swift */; };
 		A57122FD1DD3DBC100EC42A3 /* LetterSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57122FC1DD3DBC100EC42A3 /* LetterSelector.swift */; };
+		A57122FF1DD3FE3700EC42A3 /* Letter_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = A57122FE1DD3FE3700EC42A3 /* Letter_Button.png */; };
+		A57123011DD4F77300EC42A3 /* Letter-Box.png in Resources */ = {isa = PBXBuildFile; fileRef = A57123001DD4F77300EC42A3 /* Letter-Box.png */; };
+		A57123031DD4FE6500EC42A3 /* Letter-Box2.png in Resources */ = {isa = PBXBuildFile; fileRef = A57123021DD4FE6500EC42A3 /* Letter-Box2.png */; };
+		A57123051DD50B0300EC42A3 /* Miss-box.png in Resources */ = {isa = PBXBuildFile; fileRef = A57123041DD50B0300EC42A3 /* Miss-box.png */; };
+		A57123071DD526F300EC42A3 /* MissBox.png in Resources */ = {isa = PBXBuildFile; fileRef = A57123061DD526F300EC42A3 /* MissBox.png */; };
 		EC93104C1C891F2C00BE736C /* hangman1.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC9310451C891F2C00BE736C /* hangman1.gif */; };
 		EC93104D1C891F2C00BE736C /* hangman2.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC9310461C891F2C00BE736C /* hangman2.gif */; };
 		EC93104E1C891F2C00BE736C /* hangman3.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC9310471C891F2C00BE736C /* hangman3.gif */; };
@@ -48,6 +53,11 @@
 /* Begin PBXFileReference section */
 		A57122FA1DD39E9B00EC42A3 /* HiddenChar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenChar.swift; sourceTree = "<group>"; };
 		A57122FC1DD3DBC100EC42A3 /* LetterSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetterSelector.swift; sourceTree = "<group>"; };
+		A57122FE1DD3FE3700EC42A3 /* Letter_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Letter_Button.png; sourceTree = "<group>"; };
+		A57123001DD4F77300EC42A3 /* Letter-Box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Letter-Box.png"; sourceTree = "<group>"; };
+		A57123021DD4FE6500EC42A3 /* Letter-Box2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Letter-Box2.png"; sourceTree = "<group>"; };
+		A57123041DD50B0300EC42A3 /* Miss-box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Miss-box.png"; sourceTree = "<group>"; };
+		A57123061DD526F300EC42A3 /* MissBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MissBox.png; sourceTree = "<group>"; };
 		EC9310451C891F2C00BE736C /* hangman1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = hangman1.gif; path = "basic-hangman-img/hangman1.gif"; sourceTree = "<group>"; };
 		EC9310461C891F2C00BE736C /* hangman2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = hangman2.gif; path = "basic-hangman-img/hangman2.gif"; sourceTree = "<group>"; };
 		EC9310471C891F2C00BE736C /* hangman3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = hangman3.gif; path = "basic-hangman-img/hangman3.gif"; sourceTree = "<group>"; };
@@ -101,6 +111,11 @@
 		EC9310531C891F3400BE736C /* basic-hangman-img */ = {
 			isa = PBXGroup;
 			children = (
+				A57123061DD526F300EC42A3 /* MissBox.png */,
+				A57123041DD50B0300EC42A3 /* Miss-box.png */,
+				A57123021DD4FE6500EC42A3 /* Letter-Box2.png */,
+				A57123001DD4F77300EC42A3 /* Letter-Box.png */,
+				A57122FE1DD3FE3700EC42A3 /* Letter_Button.png */,
 				EC9310451C891F2C00BE736C /* hangman1.gif */,
 				EC9310461C891F2C00BE736C /* hangman2.gif */,
 				EC9310471C891F2C00BE736C /* hangman3.gif */,
@@ -303,14 +318,19 @@
 				ECC22F7C1C891A6700749E58 /* phrases.plist in Resources */,
 				EC93104E1C891F2C00BE736C /* hangman3.gif in Resources */,
 				ECC22F4D1C89177600749E58 /* LaunchScreen.storyboard in Resources */,
+				A57123071DD526F300EC42A3 /* MissBox.png in Resources */,
 				EC93104D1C891F2C00BE736C /* hangman2.gif in Resources */,
 				EC9310511C891F2C00BE736C /* hangman6.gif in Resources */,
+				A57123051DD50B0300EC42A3 /* Miss-box.png in Resources */,
 				ECC22F4A1C89177600749E58 /* Assets.xcassets in Resources */,
 				EC9310521C891F2C00BE736C /* hangman7.gif in Resources */,
 				ECC22F481C89177600749E58 /* Main.storyboard in Resources */,
 				EC93104F1C891F2C00BE736C /* hangman4.gif in Resources */,
 				EC93104C1C891F2C00BE736C /* hangman1.gif in Resources */,
 				EC9310501C891F2C00BE736C /* hangman5.gif in Resources */,
+				A57122FF1DD3FE3700EC42A3 /* Letter_Button.png in Resources */,
+				A57123031DD4FE6500EC42A3 /* Letter-Box2.png in Resources */,
+				A57123011DD4F77300EC42A3 /* Letter-Box.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

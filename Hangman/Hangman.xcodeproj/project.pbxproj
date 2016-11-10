@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A57122FB1DD39E9B00EC42A3 /* HiddenChar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57122FA1DD39E9B00EC42A3 /* HiddenChar.swift */; };
+		A57122FD1DD3DBC100EC42A3 /* LetterSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57122FC1DD3DBC100EC42A3 /* LetterSelector.swift */; };
 		EC93104C1C891F2C00BE736C /* hangman1.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC9310451C891F2C00BE736C /* hangman1.gif */; };
 		EC93104D1C891F2C00BE736C /* hangman2.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC9310461C891F2C00BE736C /* hangman2.gif */; };
 		EC93104E1C891F2C00BE736C /* hangman3.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC9310471C891F2C00BE736C /* hangman3.gif */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		A57122FA1DD39E9B00EC42A3 /* HiddenChar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenChar.swift; sourceTree = "<group>"; };
+		A57122FC1DD3DBC100EC42A3 /* LetterSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetterSelector.swift; sourceTree = "<group>"; };
 		EC9310451C891F2C00BE736C /* hangman1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = hangman1.gif; path = "basic-hangman-img/hangman1.gif"; sourceTree = "<group>"; };
 		EC9310461C891F2C00BE736C /* hangman2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = hangman2.gif; path = "basic-hangman-img/hangman2.gif"; sourceTree = "<group>"; };
 		EC9310471C891F2C00BE736C /* hangman3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = hangman3.gif; path = "basic-hangman-img/hangman3.gif"; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				ECC22F7D1C891CF800749E58 /* HangmanPhrases.swift */,
 				ECC22F7B1C891A6700749E58 /* phrases.plist */,
 				A57122FA1DD39E9B00EC42A3 /* HiddenChar.swift */,
+				A57122FC1DD3DBC100EC42A3 /* LetterSelector.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				ECC22F711C8917C200749E58 /* GameViewController.swift in Sources */,
 				ECC22F431C89177600749E58 /* AppDelegate.swift in Sources */,
 				ECC22F7E1C891CF800749E58 /* HangmanPhrases.swift in Sources */,
+				A57122FD1DD3DBC100EC42A3 /* LetterSelector.swift in Sources */,
 				ECC94FB81C891E31006B4A98 /* StartScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
